@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router } from "react-router-dom";
+import { getNotesThunk, getCategoriesThunk } from './store';
+import { connect } from 'react-redux';
+
+import { Layout } from './containers';
 import './App.css';
 
 class App extends Component {
+
   render() {
+    const { loaded } = this.props;
+    
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Router>
+          { loaded ? (
+            <Layout />
+          ) : (
+            <p>Loading</p>
+          ) }
+        </Router>
       </div>
     );
   }
 }
 
-export default App;
+const mapState = state => ({
+  loaded: (state.notes.notesLoaded && state.categories.categoriesLoaded)
+})
+
+const mapDispatch = dispatch => {
+  dispatch(getNotesThunk());
+  dispatch(getCategoriesThunk());
+  return {}
+}
+export default connect(mapState, mapDispatch)(App);
