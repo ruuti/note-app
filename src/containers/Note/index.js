@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Editor from '../../components/Editor/Editor';
+import { Editor } from '../../components';
 import { Redirect } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import { NoteList, CategoryList } from '../';
