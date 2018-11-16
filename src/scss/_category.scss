@@ -1,0 +1,56 @@
+.categorySidebar {
+  background: $lighter-color;
+  padding:0px;
+  overflow-y: auto;
+  display: flex;
+  z-index: 1;
+  
+  .categoryHeader {
+    padding: 10px 15px;
+    display: flex;
+    color: #FFF;
+    justify-content: space-between;
+    
+    .iconBtn {
+      background: none;
+      border:none;
+      i {
+        transition: all 0.2s;
+      }
+      i:hover {
+        color: $highlight-color;
+      }
+    }
+  }
+  .list-group {
+    .list-group-item {
+      background-color: $lighter-color;
+      
+      span {
+        padding-left: 5px;
+        cursor: pointer;
+      }
+      .delete {
+        opacity: 0;
+        background: none;
+        border:none;
+        font-size: 90%;
+        transition: opacity 0.1s;
+      }
+      &.active {
+        font-weight: bold;
+        background: $darker-color;
+
+        .delete {
+          opacity: 0.5;
+          &:hover {
+            opacity: 1.0;
+          }
+        }
+        span {
+          cursor: default;
+        }
+      }
+    }
+  }
+}

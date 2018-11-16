@@ -1,0 +1,20 @@
+.strong {
+  font-weight: bold;
+}
+
+.list-group {
+  border-radius: 0;
+  box-shadow: none !important;
+  border: none;
+
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0px;
+    color: #FFF;
+    text-decoration: none;
+    margin-bottom:0px;
+    border:none;
+    transition: all 0.1s;
+  }
+}

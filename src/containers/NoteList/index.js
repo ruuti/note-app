@@ -88,12 +88,22 @@ class NoteList extends Component {
   render() {
     return (
       <div>
-        <input 
-          type="text"
-          className="form-control"
-          placeholder="Search"
-          value={this.state.query} 
-          onChange={this.handleChange} />
+        <div className={'searchBar'}>
+          <div className="input-group">
+            <span className="input-group-btn">
+              <button className="btn" type="button">
+                <i className={'glyphicon glyphicon-search'}></i>
+              </button>
+            </span>
+            <input 
+              type="text"
+              className="form-control"
+              placeholder={'Search for notes...'}
+              value={this.state.query} 
+              onChange={this.handleChange} />
+          </div>
+          
+        </div>
         
         <NoteListItems notes={this.state.searchHits} />        
       </div>

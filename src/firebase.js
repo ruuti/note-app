@@ -4,7 +4,7 @@ import { notesRef, categoryRef } from './firebaseRefs';
  * Create a new note text to database
  */
 export const addNote = (categoryUid) => {
-  const now = new Date().toISOString();
+  const now = new Date().getTime();
   return notesRef.push({
     text: '',
     createdAt: now,
@@ -17,20 +17,22 @@ export const addNote = (categoryUid) => {
 
 /**
  * Update note text to database
- * @param  {uid}  UID of the note to update
- * @param  {text} Text value
+ * @param  {string}  uid of the note to update
+ * @param  {string}  text value
+ * @param  {string}  raw value of EditorState
  */
-export const updateNote = (uid, text) => {
-  const now = new Date().toISOString();
+export const updateNote = (uid, text, raw) => {
+  const now = new Date().getTime();
   notesRef.child(uid).update({
     text,
-    editedAt: now
+    editedAt: now,
+    raw
   });
 };
 
 /**
  * Delete note from database
- * @param  {uid} UID of the note to delete
+ * @param  {string} uid of the note to delete
  */
 export const removeNote = (uid) => {
   notesRef.child(uid).remove()
@@ -66,7 +68,8 @@ export const removeCategory = (uid) => {
  * @param  {string} uid Notes in this category will be updated
  */
 const unsetNoteCategoryByCategoryUid = (uid) => {
-  return notesRef.orderByChild('categoryUid').equalTo(uid).once('value', snap => {
+  const query = notesRef.orderByChild('categoryUid').equalTo(uid);
+  return query.once('value', snap => {
     
     const updateArray = [];
     snap.forEach(data => {

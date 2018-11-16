@@ -5,17 +5,35 @@ import moment from 'moment';
 
 import { removeNote }  from '../../firebase';
 
-import './NoteListItem.css';
-
 class NoteListItem extends Component {
   
+  constructor(props) {
+    super(props);
+
+    this.state = { 
+      selectedNote : this.props.match.params.id
+    };
+  }
+
+  componentDidMount() {
+    this.unlisten = this.props.history.listen( location =>  {
+      // TODO: change this.
+      this.setState({
+        selectedNote: location.pathname.substring(1)
+      });  
+    });
+  }
+  componentWillUnmount() {
+    this.unlisten();
+  }
+
   getItemTitle(note){
     if(!note.text.length){
       // Return just a edit date
       return moment(note.createdAt).format('dddd');
-    }else if(note.text.length > 50){
+    }else if(note.text.length > 60){
       // Title is too long to display so cut it
-      return note.text.substring(0, 50)+'..';
+      return note.text.substring(0, 60)+'..';
     }else{
       // Return note text as it is
       return note.text;
@@ -23,19 +41,28 @@ class NoteListItem extends Component {
   }
 
   render() {
-    const { note, match } = this.props;
+    const { note } = this.props;
     const pathname = '/'+note.id;
-    const active = (note.id === match.params.id);
+    const active = (note.id === this.state.selectedNote);
 
     return (
-      <ListGroupItem>
-        <Link to={{ pathname }}>
-          { this.getItemTitle(note) } ({ active ? 'A' : 'I' })
-        </Link>
-        <span onClick={() => removeNote(note.id)}>
-          Delete
-        </span>
-      </ListGroupItem>
+      <Link to={{ pathname }}>
+        <ListGroupItem className={ active ? 'active' : '' }>
+          <div>
+            <div>          
+              <span>{ this.getItemTitle(note) }</span>
+            </div>
+            <div>          
+              <span className={'date'}>
+                <i className={'glyphicon glyphicon-time'}></i> { moment(note.createdAt).format('dddd') }
+              </span>
+            </div>
+          </div>        
+          <button type={'text'} className={'delete'} onClick={() => removeNote(note.id)}>
+            <i className={'glyphicon glyphicon-trash'}></i>
+          </button>
+        </ListGroupItem>
+      </Link>
     );
   }
 }

@@ -9,7 +9,7 @@ class CategoryListItems extends Component {
   	const { selectedCategory } = this.props;
     const defaultCategory = {
       id : null,
-      title : 'Default',
+      title : 'All notes',
       isDefault : true
     }
   	

@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { addNote }  from '../../firebase';
 import { setSearch } from '../../actions';
 
-
 class Header extends Component {
 
   handleSubmit() {
@@ -25,7 +24,9 @@ class Header extends Component {
             e.preventDefault();
             this.handleSubmit();
           }}>
-          <button type="submit">New</button>
+          <button className={'btn'} type="submit">
+            <i className={'glyphicon glyphicon-edit'}></i> New note
+          </button>
         </form>
       </div>
     )

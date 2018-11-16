@@ -4,7 +4,7 @@ import { getNotesThunk, getCategoriesThunk } from './store';
 import { connect } from 'react-redux';
 
 import { Layout } from './containers';
-import './App.css';
+import { Loading } from './components';
 
 class App extends Component {
 
@@ -17,7 +17,7 @@ class App extends Component {
           { loaded ? (
             <Layout />
           ) : (
-            <p>Loading</p>
+            <Loading />
           ) }
         </Router>
       </div>

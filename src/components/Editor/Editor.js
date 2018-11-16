@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateNote }  from '../../firebase';
-import './Editor.css';
+import { Editor as NoteEditor, EditorState, 
+  RichUtils, convertToRaw, convertFromRaw} from 'draft-js';
 
 /**
  * Note UI editor to edit active note.
- * Renders textarea.
  */
 class Editor extends Component {
 
@@ -13,37 +13,90 @@ class Editor extends Component {
     super(props);
 
     const { note } = props;    
-    this.state = note;
+    this.state = {
+      ...note,
+      editorState: this.getEditorStateFromNote(note)
+    };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleKeyCommand = this.handleKeyCommand.bind(this);
+    this.focus = () => this.refs.editor.focus();
+  }
+
+
+  // Returns either empty EditorState or from
+  // raw
+  getEditorStateFromNote(note){
+    return note.raw
+      ? 
+        EditorState.createWithContent(
+          convertFromRaw(
+            JSON.parse(note.raw)
+          )
+        ) 
+      :
+        EditorState.createEmpty()
   }
 
   // Update state when user navigates to 
   // a new note.
   componentWillReceiveProps(nextProps) {
     const { note } = nextProps;
-    if (this.state.note !== note) {
-      this.setState(note);
+    if (this.state.id !== note.id) {
+      this.setState({
+        ...note,
+        editorState: this.getEditorStateFromNote(
+          note
+        )
+      });
     }
   }
 
-  // Handle textarea change when onChange gets
-  // triggered
-  handleChange(event) {
-    this.setState({text: event.target.value}, () => {
-      const { id, text } = this.state;
-      updateNote(id, text);
-    });
+  // Takes current editorState and stores both raw and
+  // plaintext values to database
+  storeToDatabase(editorState){
+    const raw = convertToRaw(
+      editorState.getCurrentContent()
+    );
+    const { id } = this.state;
+    let plainText = '';
+    raw.blocks.map(block =>
+      plainText += block.text+' '
+    );
+    updateNote(id, plainText, JSON.stringify(raw));
   }
 
-  // Render textarea for a note
+  // Handle editor change when onChange gets
+  // triggered
+  handleChange(editorState) {
+    this.setState({editorState});
+    this.storeToDatabase(editorState);
+  }
+
+  // Handle commands like cmd+(b|i|u)
+  handleKeyCommand(command, editorState) {
+    const newState = RichUtils.handleKeyCommand(
+      editorState,
+      command
+    );
+    if (newState) {
+      this.handleChange(newState);
+      return 'handled';
+    }
+    return 'not-handled';
+  }
+
+  // Render editor for a note
   render() {
     return (
-      <textarea 
-        value={this.state.text} 
-        onChange={this.handleChange}
-        className="form-control notearea">
-      </textarea>
+      <div className="area" onClick={this.focus}>
+        <NoteEditor 
+          editorState={this.state.editorState} 
+          onChange={this.handleChange}
+          spellCheck={true}
+          ref="editor"
+          handleKeyCommand={this.handleKeyCommand} />
+      </div>
     );
   }
 }

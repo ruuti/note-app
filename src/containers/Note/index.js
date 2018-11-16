@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Editor from '../../components/Editor/Editor';
 import { Redirect } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
+import { NoteList, CategoryList } from '../';
 
 class Note extends Component {
 
@@ -13,13 +15,26 @@ class Note extends Component {
       obj.id === match.params.id
     );
     
-    if(!note){
-      return <Redirect to='/'  />
-    }else{
-      return (
-        <Editor note={note} />
-      );
+    if((!match.params.id && notes.length) || (match.params.id && !note && notes.length)){
+      const latestNotePath = '/'+notes[0].id;
+      return <Redirect to={latestNotePath}  />;
     }
+
+    return (
+      <Row className="show-grid wrapper">
+       <Col xs={2} md={2} className="categorySidebar split">
+          <CategoryList />
+        </Col>
+        <Col xs={3} md={3} className="sidebar split">
+          <NoteList />
+        </Col>
+        <Col xs={7} md={7} className="editor split">
+          { note &&
+            <Editor note={note} />
+          }
+        </Col>
+      </Row>
+    );
   }
 }
 
