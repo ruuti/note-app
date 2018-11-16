@@ -30,7 +30,10 @@ class CategoryListItem extends Component {
     const { category, active } = this.props;
     return (
       <ListGroupItem className={ active ? 'active' : '' }>
-        <span onClick={this.handleClick}>{ category.title }</span>
+        <span 
+          onClick={this.handleClick}>
+            { category.title }
+        </span>
         { !category.isDefault &&
           <button className={'delete'} onClick={this.handleDeleteClick}>
             <i className={'glyphicon glyphicon-trash'}></i>
