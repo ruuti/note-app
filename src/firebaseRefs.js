@@ -1,11 +1,12 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
 import { FirebaseConfig } from "./config";
 
 // Initialize Firebase database
 firebase.initializeApp(FirebaseConfig);
-const database = firebase.database();
+const db = firebase.database();
 
-export const notesRef = database.ref('notes');
-export const categoryRef = database.ref('categories');
+export const notesRef = db.ref('notes');
+export const categoryRef = db.ref('categories');
 
-export default database;
+export default db;
