@@ -29,9 +29,11 @@ class Note extends Component {
           <NoteList />
         </Col>
         <Col xs={7} md={7} className="editor split">
-          { note &&
-            <Editor note={note} />
-          }
+          <div className={'editor-container'}>
+            { note &&
+              <Editor note={note} />
+            }
+          </div>
         </Col>
       </Row>
     );

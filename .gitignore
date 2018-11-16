@@ -21,3 +21,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/src/config/dev.js
+/src/config/production.js
+/src/config/staging.js
+
+/.firebaserc
+
+/.firebase/
