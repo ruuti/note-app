@@ -7,27 +7,27 @@ import { setSearch } from '../../actions';
 
 class Header extends Component {
 
-  handleSubmit() {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
     const { selectedCategory } = this.props;
-    addNote(selectedCategory).then((id) => {
+    addNote(selectedCategory).then(id => {
       // Open created empty note
       this.props.history.push('/'+id);
       // Clear search for better UX
       this.props.setSearch('');
     });
   }
+
   render (){
     return (
       <div>
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            this.handleSubmit();
-          }}>
-          <button className={'btn'} type="submit">
-            <i className={'glyphicon glyphicon-edit'}></i> New note
-          </button>
-        </form>
+        <button className={'btn'} onClick={this.handleClick}>
+          <i className={'glyphicon glyphicon-edit'}></i> New note
+        </button>
       </div>
     )
   }
