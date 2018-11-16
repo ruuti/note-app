@@ -1,4 +1,4 @@
-Notes app is a sample web-based note taking application.
+Notes app is a sample web-based note taking application. Live demo: [https://notes-bce89.firebaseapp.com/](https://notes-bce89.firebaseapp.com/)
 
 ## Running locally
 
@@ -28,6 +28,8 @@ export const FirebaseConfig = {
 Create and get Firebase configurations by following instructions here: [
 Installation & Setup in JavaScript](https://firebase.google.com/docs/database/web/start)
 
+Run project locally by executing: `yarn start`
+
 ## Build production
 
 `npm run build` or `yarn build`
@@ -39,3 +41,15 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 Deploy application to Firebase by running: `firebase deploy`.
+
+## Components used:
+
+- [React](https://github.com/facebook/react)
+- [Firebase](https://firebase.google.com/)
+- [Fuse.js](https://github.com/krisk/fuse)
+- [Draft.js](https://github.com/facebook/draft-js)
+- [Moment.js](https://github.com/moment/moment/)
+- [Icons8](https://icons8.com/)
+- [Bootsrap](https://github.com/twbs/bootstrap)
+- [React Redux](https://github.com/reduxjs/react-redux)
+- [Redux](https://github.com/reduxjs/redux)
