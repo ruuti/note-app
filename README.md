@@ -1,5 +1,7 @@
 Notes app is a sample web-based note taking application. Live demo: [https://notes-bce89.firebaseapp.com/](https://notes-bce89.firebaseapp.com/)
 
+![Note app screenshot](https://github.com/ruuti/note-app/blob/master/screenshots/screenshot.png)
+
 ## Running locally
 
 In the project directory, you can run either:
