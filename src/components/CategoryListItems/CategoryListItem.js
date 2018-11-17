@@ -30,10 +30,9 @@ class CategoryListItem extends Component {
   render() {
     const { category, active } = this.props;
     return (
-      <ListGroupItem className={ active ? 'active' : '' }>
-        <span 
-          onClick={this.handleClick}>
-            { category.title }
+      <ListGroupItem className={ active && 'active' }>
+        <span onClick={this.handleClick}>
+          { category.title }
         </span>
         { !category.isDefault &&
           <IconButton 
@@ -45,11 +44,10 @@ class CategoryListItem extends Component {
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    selectCategory: uid => {
-      dispatch(selectCategory(uid))
-    }
+const mapDispatch = dispatch => ({
+  selectCategory: uid => {
+    dispatch(selectCategory(uid))
   }
-}
+})
+
 export default connect(null, mapDispatch)(CategoryListItem);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import DateRow from './DateRow';
 
 class NoteListItemContent extends Component {
   
@@ -18,6 +19,7 @@ class NoteListItemContent extends Component {
 
   render() {
     const { note } = this.props;
+    const formatedEditedAt = moment(note.editedAt).format('dddd');
 
     return (
       <div>
@@ -25,9 +27,7 @@ class NoteListItemContent extends Component {
           { this.getItemTitle(note) }
         </div>
         <div>
-          <span className={'date'}>
-            <i className={'glyphicon glyphicon-time'}></i> { moment(note.createdAt).format('dddd') }
-          </span>
+          <DateRow text={formatedEditedAt} />
         </div>
       </div>
     );

@@ -24,4 +24,5 @@ class CategoryListItems extends Component {
 const mapState = state => ({
   selectedCategory: state.categories.selectedCategory
 })
+
 export default connect(mapState, null)(CategoryListItems);

@@ -66,13 +66,11 @@ class CategoryList extends Component {
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    selectCategory: uid => {
-      dispatch(selectCategory(uid))
-    }
+const mapDispatch = dispatch => ({
+  selectCategory: uid => {
+    dispatch(selectCategory(uid))
   }
-}
+})
 
 const mapState = state => ({
   categories: state.categories.categories

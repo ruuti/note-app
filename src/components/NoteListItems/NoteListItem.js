@@ -13,7 +13,7 @@ class NoteListItem extends Component {
     super(props);
 
     this.state = { 
-      selectedNote : this.props.match.params.id
+      selectedNote : props.match.params.id
     };
     this.handleRemove = this.handleRemove.bind(this);
   }
@@ -23,7 +23,7 @@ class NoteListItem extends Component {
   }
 
   componentDidMount() {
-    this.unlisten = this.props.history.listen( location =>  {
+    this.unlisten = this.props.history.listen(location => {
       // TODO: change this.
       this.setState({
         selectedNote: location.pathname.substring(1)
@@ -42,7 +42,7 @@ class NoteListItem extends Component {
 
     return (
       <Link to={{ pathname }}>
-        <ListGroupItem className={ isActive ? 'active' : '' }>
+        <ListGroupItem className={ isActive && 'active' }>
           <NoteListItemContent note={note} />
           <IconButton 
             iconClass={'glyphicon-trash'} 

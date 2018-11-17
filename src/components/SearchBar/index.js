@@ -5,7 +5,9 @@ const SearchBar = ({inputValue, onChange}) => (
   <div className={'searchBar'}>
     <div className={'input-group'}>
       <span className={'input-group-btn'}>
-        <IconButton buttonClass={'btn'} iconClass={'glyphicon-search'} />
+        <IconButton 
+          buttonClass={'btn'} 
+          iconClass={'glyphicon-search'} />
       </span>
       <input 
         type={'text'}
