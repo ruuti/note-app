@@ -12,10 +12,9 @@ class Editor extends Component {
   constructor(props) {
     super(props);
 
-    const { note } = props;    
     this.state = {
-      ...note,
-      editorState: this.getEditorStateFromNote(note)
+      ...props.note,
+      editorState: this.getEditorStateFromNote(props.note)
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,19 +22,16 @@ class Editor extends Component {
     this.focus = () => this.refs.editor.focus();
   }
 
-
   // Returns either empty EditorState or from
   // raw
   getEditorStateFromNote(note){
     return note.raw
-      ? 
-        EditorState.createWithContent(
+      ? EditorState.createWithContent(
           convertFromRaw(
             JSON.parse(note.raw)
           )
         ) 
-      :
-        EditorState.createEmpty()
+      : EditorState.createEmpty()
   }
 
   // Update state when user navigates to 
@@ -52,17 +48,25 @@ class Editor extends Component {
     }
   }
 
+  // Gets the plain text version (one string) from
+  // raw data. Line breaks (blocks) are replaced
+  // with space.
+  getPlainTextVersion(raw){
+    let plainText = '';
+    raw.blocks.map(block =>
+      plainText += block.text+' '
+    );
+    return plainText.trim(); // Remove last space
+  }
+
   // Takes current editorState and stores both raw and
   // plaintext values to database
   storeToDatabase(editorState){
     const raw = convertToRaw(
       editorState.getCurrentContent()
     );
-    const { id } = this.state;
-    let plainText = '';
-    raw.blocks.map(block =>
-      plainText += block.text+' '
-    );
+    const { id } = this.state,
+      plainText  = this.getPlainTextVersion(raw);
     updateNote(id, plainText, JSON.stringify(raw));
   }
 
@@ -86,7 +90,6 @@ class Editor extends Component {
     return 'not-handled';
   }
 
-  // Render editor for a note
   render() {
     return (
       <div className="area" onClick={this.focus}>

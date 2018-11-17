@@ -31,6 +31,7 @@ class CategoryList extends Component {
       this.props.selectCategory(id);
     });
   }
+  
   handleHideModal() {
     this.setState({ showModal: false });
   }

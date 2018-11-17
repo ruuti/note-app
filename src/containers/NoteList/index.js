@@ -17,7 +17,6 @@ class NoteList extends Component {
       allNotes: props.notes,
       selectedCategory: props.selectedCategory
     };
-
     this.handleChange = this.handleChange.bind(this);
   }
 

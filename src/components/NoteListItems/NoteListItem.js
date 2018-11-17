@@ -15,7 +15,6 @@ class NoteListItem extends Component {
     this.state = { 
       selectedNote : this.props.match.params.id
     };
-
     this.handleRemove = this.handleRemove.bind(this);
   }
 
@@ -31,6 +30,7 @@ class NoteListItem extends Component {
       });  
     });
   }
+
   componentWillUnmount() {
     this.unlisten();
   }
