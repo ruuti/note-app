@@ -29,7 +29,7 @@ class Header extends Component {
         buttonClass={'btn'} 
         onClick={this.handleClick} 
         text={'New note'}
-        iconClass={'glyphicon glyphicon-edit'} />
+        iconClass={'glyphicon-edit'} />
     )
   }
 }

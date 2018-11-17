@@ -38,7 +38,7 @@ class CategoryListItem extends Component {
         { !category.isDefault &&
           <IconButton 
             buttonClass={'delete'}
-            iconClass={'glyphicon glyphicon-trash'}
+            iconClass={'glyphicon-trash'}
             onClick={this.handleDeleteClick} />
         }
       </ListGroupItem>

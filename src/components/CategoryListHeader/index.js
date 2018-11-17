@@ -8,7 +8,7 @@ const CategoryListHeader = ({onClick}) => (
     </div>
     <IconButton 
       buttonClass={'iconBtn'}
-      iconClass={'glyphicon glyphicon-plus-sign'}
+      iconClass={'glyphicon-plus-sign'}
       onClick={onClick} />
   </div>
 );

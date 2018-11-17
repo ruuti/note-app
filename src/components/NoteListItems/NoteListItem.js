@@ -46,7 +46,7 @@ class NoteListItem extends Component {
           <NoteListItemContent note={note} />
           <IconButton 
             buttonClass={'delete'}
-            iconClass={'glyphicon glyphicon-trash'} 
+            iconClass={'glyphicon-trash'} 
             onClick={this.handleRemove} />
         </ListGroupItem>
       </Link>
