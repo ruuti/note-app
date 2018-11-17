@@ -9,20 +9,21 @@ class Note extends Component {
 
   render() {
     
-    // This should be somewhere else, but you know.. 
     const { notes, match } = this.props;
     const note = notes.find(obj => 
       obj.id === match.params.id
     );
     
-    if((!match.params.id && notes.length) || (match.params.id && !note && notes.length)){
+    // if requested note doesn't exist, but there are
+    // notes, redirect user to latest note.
+    if(!note && notes.length){
       const latestNotePath = '/'+notes[0].id;
       return <Redirect to={latestNotePath}  />;
     }
 
     return (
       <Row className="show-grid wrapper">
-       <Col xs={2} md={2} className="categorySidebar split">
+        <Col xs={2} md={2} className="categorySidebar split">
           <CategoryList />
         </Col>
         <Col xs={3} md={3} className="sidebar split">
