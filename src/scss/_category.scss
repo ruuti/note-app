@@ -11,9 +11,7 @@
     color: #FFF;
     justify-content: space-between;
     
-    .iconBtn {
-      background: none;
-      border:none;
+    .icon-only-button {
       i {
         transition: all 0.2s;
       }
@@ -30,10 +28,8 @@
         padding-left: 5px;
         cursor: pointer;
       }
-      .delete {
+      .icon-only-button {
         opacity: 0;
-        background: none;
-        border:none;
         font-size: 90%;
         transition: opacity 0.1s;
       }
@@ -41,7 +37,7 @@
         font-weight: bold;
         background: $darker-color;
 
-        .delete {
+        .icon-only-button {
           opacity: 0.5;
           &:hover {
             opacity: 1.0;

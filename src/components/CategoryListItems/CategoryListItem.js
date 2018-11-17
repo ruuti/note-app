@@ -37,7 +37,6 @@ class CategoryListItem extends Component {
         </span>
         { !category.isDefault &&
           <IconButton 
-            buttonClass={'delete'}
             iconClass={'glyphicon-trash'}
             onClick={this.handleDeleteClick} />
         }

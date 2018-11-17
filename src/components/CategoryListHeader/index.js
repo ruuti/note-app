@@ -7,7 +7,6 @@ const CategoryListHeader = ({onClick}) => (
       <span className={'strong'}>Folders</span>
     </div>
     <IconButton 
-      buttonClass={'iconBtn'}
       iconClass={'glyphicon-plus-sign'}
       onClick={onClick} />
   </div>
