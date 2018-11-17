@@ -4,26 +4,17 @@ import { ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 class CategoryListItems extends Component {
+  
   render() {
-
     const { selectedCategory } = this.props;
-    const defaultCategory = {
-      id : null,
-      title : 'All notes',
-      isDefault : true
-    }
-    
+
     return (
       <ListGroup>
-        <CategoryListItem 
-            key={null} 
-            category={defaultCategory} 
-            active={(selectedCategory === null)} />
         {this.props.categories.map((category) => (
           <CategoryListItem 
             key={category.id} 
             category={category} 
-            active={(selectedCategory && selectedCategory===category.id)} />
+            active={selectedCategory===category.id} />
         ))}
       </ListGroup>
     );
