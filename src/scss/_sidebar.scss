@@ -39,6 +39,7 @@
         background-color: $darker-color-highlight;
         border-bottom: 1px solid #304051;
         border-right-color: $highlight-color;
+        cursor:default;
 
         span:not(.date) {
           cursor: default;

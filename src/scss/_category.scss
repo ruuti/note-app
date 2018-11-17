@@ -37,14 +37,18 @@
         font-weight: bold;
         background: $darker-color;
 
-        .icon-only-button {
-          opacity: 0.5;
-          &:hover {
-            opacity: 1.0;
-          }
-        }
         span {
           cursor: default;
+        }
+
+        &:hover{
+          .icon-only-button {
+            opacity: 0.5;
+            
+            &:hover {
+              opacity: 1.0;
+            }
+          }
         }
       }
     }
