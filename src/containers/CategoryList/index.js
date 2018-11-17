@@ -35,7 +35,7 @@ class CategoryList extends Component {
     this.setState({ showModal: false });
   }
   
-	handleClick() {
+  handleClick() {
     this.setState({ 
       category: '',
       showModal: true
