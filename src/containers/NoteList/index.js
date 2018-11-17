@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import NoteListItems from '../../components/NoteListItems/NoteListItems';
+import { NoteListItems, SearchBar } from '../../components/';
 
 import { setSearch } from '../../actions';
 
@@ -12,10 +12,10 @@ class NoteList extends Component {
     super(props);
 
     this.state = { 
-      query : this.props.query,
-      searchHits: this.props.notes,
-      allNotes: this.props.notes,
-      selectedCategory: this.props.selectedCategory
+      query : props.query,
+      searchHits: props.notes,
+      allNotes: props.notes,
+      selectedCategory: props.selectedCategory
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -88,23 +88,9 @@ class NoteList extends Component {
   render() {
     return (
       <div>
-        <div className={'searchBar'}>
-          <div className="input-group">
-            <span className="input-group-btn">
-              <button className="btn" type="button">
-                <i className={'glyphicon glyphicon-search'}></i>
-              </button>
-            </span>
-            <input 
-              type="text"
-              className="form-control"
-              placeholder={'Search for notes...'}
-              value={this.state.query} 
-              onChange={this.handleChange} />
-          </div>
-          
-        </div>
-        
+        <SearchBar 
+          inputValue={this.state.query} 
+          onChange={this.handleChange} />
         <NoteListItems notes={this.state.searchHits} />        
       </div>
     );

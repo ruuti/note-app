@@ -5,6 +5,8 @@ import IconButton from './IconButton';
 import CategoryListItems from './CategoryListItems';
 import CategoryListHeader from './CategoryListHeader';
 import CategoryCreationModal from './CategoryCreationModal';
+import NoteListItems from './NoteListItems';
+import SearchBar from './SearchBar';
 
 export {
   Header,
@@ -13,5 +15,7 @@ export {
   IconButton,
   CategoryListItems,
   CategoryListHeader,
-  CategoryCreationModal
+  CategoryCreationModal,
+  NoteListItems,
+  SearchBar
 };
