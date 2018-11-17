@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import moment from 'moment';
 
 import { removeNote }  from '../../firebase';
+import { IconButton } from '../';
 
 class NoteListItem extends Component {
   
@@ -13,6 +14,12 @@ class NoteListItem extends Component {
     this.state = { 
       selectedNote : this.props.match.params.id
     };
+
+    this.handleRemove = this.handleRemove.bind(this);
+  }
+
+  handleRemove(){
+    removeNote(this.props.note.id);
   }
 
   componentDidMount() {
@@ -43,24 +50,25 @@ class NoteListItem extends Component {
   render() {
     const { note } = this.props;
     const pathname = '/'+note.id;
-    const active = (note.id === this.state.selectedNote);
+    const isActive = (note.id === this.state.selectedNote);
 
     return (
       <Link to={{ pathname }}>
-        <ListGroupItem className={ active ? 'active' : '' }>
+        <ListGroupItem className={ isActive ? 'active' : '' }>
           <div>
-            <div>          
+            <div>
               <span>{ this.getItemTitle(note) }</span>
             </div>
-            <div>          
+            <div>
               <span className={'date'}>
                 <i className={'glyphicon glyphicon-time'}></i> { moment(note.createdAt).format('dddd') }
               </span>
             </div>
-          </div>        
-          <button type={'text'} className={'delete'} onClick={() => removeNote(note.id)}>
-            <i className={'glyphicon glyphicon-trash'}></i>
-          </button>
+          </div>
+          <IconButton 
+            buttonClass={'delete'}
+            iconClass={'glyphicon glyphicon-trash'} 
+            onClick={this.handleRemove} />
         </ListGroupItem>
       </Link>
     );

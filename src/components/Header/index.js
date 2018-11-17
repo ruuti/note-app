@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import { addNote }  from '../../firebase';
 import { setSearch } from '../../actions';
+import { IconButton } from '../';
 
 class Header extends Component {
 
@@ -24,11 +25,11 @@ class Header extends Component {
 
   render (){
     return (
-      <div>
-        <button className={'btn'} onClick={this.handleClick}>
-          <i className={'glyphicon glyphicon-edit'}></i> New note
-        </button>
-      </div>
+      <IconButton 
+        buttonClass={'btn'} 
+        onClick={this.handleClick} 
+        text={'New note'}
+        iconClass={'glyphicon glyphicon-edit'} />
     )
   }
 }

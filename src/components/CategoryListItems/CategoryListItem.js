@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { selectCategory } from '../../actions';
 import { removeCategory }  from '../../firebase';
+import { IconButton } from '../';
 
 class CategoryListItem extends Component {
   
@@ -35,9 +36,10 @@ class CategoryListItem extends Component {
             { category.title }
         </span>
         { !category.isDefault &&
-          <button className={'delete'} onClick={this.handleDeleteClick}>
-            <i className={'glyphicon glyphicon-trash'}></i>
-          </button>
+          <IconButton 
+            buttonClass={'delete'}
+            iconClass={'glyphicon glyphicon-trash'}
+            onClick={this.handleDeleteClick} />
         }
       </ListGroupItem>
     );

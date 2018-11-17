@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import CategoryListItems from '../../components/CategoryListItems/CategoryListItems';
+import { IconButton, CategoryListItems } from '../../components';
 
 import { addCategory }  from '../../firebase';
 import { selectCategory } from '../../actions';
@@ -53,11 +53,12 @@ class CategoryList extends Component {
       <div>
         <div className={'categoryHeader'}>
           <div>
-            <span className="strong">Folders</span>
+            <span className={'strong'}>Folders</span>
           </div>
-          <button type="button" className={'iconBtn'} onClick={this.handleClick}>
-            <i className={'glyphicon glyphicon-plus-sign'}></i>
-          </button>
+          <IconButton 
+            buttonClass={'iconBtn'}
+            iconClass={'glyphicon glyphicon-plus-sign'}
+            onClick={this.handleClick} />
         </div>
         <CategoryListItems categories={this.props.categories} />
         
