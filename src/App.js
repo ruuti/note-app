@@ -9,16 +9,13 @@ import { Loading } from './components';
 class App extends Component {
 
   render() {
-    const { loaded } = this.props;
-    
+    const { isLoaded } = this.props;
+    const content = isLoaded ? <Layout /> : <Loading />;
+
     return (
-      <div className="App">
+      <div className={'App'}>
         <Router>
-          { loaded ? (
-            <Layout />
-          ) : (
-            <Loading />
-          ) }
+          { content }
         </Router>
       </div>
     );
@@ -26,7 +23,7 @@ class App extends Component {
 }
 
 const mapState = state => ({
-  loaded: (state.notes.notesLoaded && state.categories.categoriesLoaded)
+  isLoaded: (state.notes.notesLoaded && state.categories.categoriesLoaded)
 })
 
 const mapDispatch = dispatch => {
