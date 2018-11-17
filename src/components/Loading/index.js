@@ -1,13 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-class Loading extends Component {
-  render() {
-  	return (
-      <div className={'loading'}>
-        <i className="glyphicon glyphicon-refresh"></i>
-      </div>
-    );
-  }
-}
+const Loading = () => (
+  <div className={'loading'}>
+    <i className="glyphicon glyphicon-refresh"></i>
+  </div>
+);
 
 export default Loading;
