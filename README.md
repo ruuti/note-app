@@ -1,6 +1,15 @@
-Notes app is a sample web-based note taking application. Live demo: [https://notes-bce89.firebaseapp.com/](https://notes-bce89.firebaseapp.com/)
+Note-app is a sample web-based note taking application.
+
+### Live demo: [https://notes-bce89.firebaseapp.com/](https://notes-bce89.firebaseapp.com/)
 
 ![Note app screenshot](https://github.com/ruuti/note-app/blob/master/screenshots/screenshot.png)
+
+## Features
+
+- Create, edit and delete notes in realtime
+- Create and delete folders
+- Rich text editor with **bold**, *italic* and underline
+- Advanced live fuzzy-search
 
 ## Running locally
 
@@ -42,7 +51,9 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-Deploy application to Firebase by running: `firebase deploy`.
+### Deploy to Firebase Hosting
+
+Deploy application to Firebase hosting by running: `firebase deploy`.
 
 ## Components used:
 
