@@ -7,7 +7,7 @@ const IconButton = ({onClick, iconClass, buttonClass, text}) => (
 );
 
 IconButton.defaultProps = {
-	buttonClass: 'icon-only-button'
+  buttonClass: 'icon-only-button'
 };
 
 export default IconButton;

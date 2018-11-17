@@ -7,6 +7,7 @@ import CategoryListHeader from './CategoryListHeader';
 import CategoryCreationModal from './CategoryCreationModal';
 import NoteListItems from './NoteListItems';
 import SearchBar from './SearchBar';
+import AppContainer from './AppContainer';
 
 export {
   Header,
@@ -17,5 +18,6 @@ export {
   CategoryListHeader,
   CategoryCreationModal,
   NoteListItems,
-  SearchBar
+  SearchBar,
+  AppContainer
 };

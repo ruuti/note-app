@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
 import { getNotesThunk, getCategoriesThunk } from './store';
 import { connect } from 'react-redux';
 
 import { Layout } from './containers';
-import { Loading } from './components';
+import { Loading, AppContainer } from './components';
 
 class App extends Component {
 
   render() {
     const { isLoaded } = this.props;
-    const content = isLoaded ? <Layout /> : <Loading />;
+    const contentToRender = isLoaded ? <Layout /> : <Loading />;
 
     return (
-      <div className={'App'}>
-        <Router>
-          { content }
-        </Router>
-      </div>
+      <AppContainer>
+        { contentToRender }
+      </AppContainer>
     );
   }
 }
