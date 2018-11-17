@@ -2,6 +2,13 @@ Notes app is a sample web-based note taking application. Live demo: [https://not
 
 ![Note app screenshot](https://github.com/ruuti/note-app/blob/master/screenshots/screenshot.png)
 
+## Features
+
+- Create, edit and delete notes in realtime
+- Create and delete folders
+- Rich text editor with **bold**, *italic* and underline
+- Advanced live fuzzy-search
+
 ## Running locally
 
 In the project directory, you can run either:
