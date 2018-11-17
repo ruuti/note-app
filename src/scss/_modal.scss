@@ -1,7 +1,28 @@
 .modal-dialog {
-	width: 400px;
-	
-	.modal-header {
-		color:#0f2c45;
-	}
+  width: 400px;
+  
+  .modal-header {
+    color:#0f2c45;
+    border: none;
+
+    h4.modal-title {
+      color: #182029;
+    }
+  }
+
+  .modal-footer {
+    border-top: none;
+    .btn-green {
+      background: #14c9a1;
+      color: #fff;
+    }
+  }
+
+  input.form-control {
+    border:none;
+    box-shadow:none;
+    border-radius:0px;
+    border-bottom: 1px solid #CCC;
+    padding: 6px 2px;;
+  }
 }

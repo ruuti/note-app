@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 const CategoryCreationModal = ({show, onHide, onSubmit, inputValue, onChange, onClick}) => (
   <Modal
@@ -19,13 +19,15 @@ const CategoryCreationModal = ({show, onHide, onSubmit, inputValue, onChange, on
             onChange={onChange}
             required={true}
             autoFocus
-            placeholder={'Folder name'}
-            className={'form-control'} />
+            placeholder={'Type a new folder name..'}
+            className={'form-control'}
+            maxLength="25" />
         </Modal.Body>
 
         <Modal.Footer>
-          <Button onClick={onClick}>Cancel</Button>
-          <Button bsStyle="primary" type="submit">Create folder</Button>
+          <button type="submit" className={'btn btn-green btn-block btn-big'}>
+            <i class="glyphicon glyphicon-plus"></i> Create folder
+          </button>
         </Modal.Footer>
       </form>
   </Modal>
