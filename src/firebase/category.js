@@ -3,12 +3,10 @@ import { unsetNoteCategoryByCategoryUid } from './notes';
 
 /**
  * Create a new category to database
- * @param  {string} categoryname
+ * @param  {string} category name
  */
-export const addCategory = categoryName =>
-  categoryRef.push({
-    title: categoryName
-  }).then(snap => 
+export const addCategory = title =>
+  categoryRef.push({title}).then(snap => 
     snap.key
   )
 
