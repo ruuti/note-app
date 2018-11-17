@@ -7,7 +7,7 @@ class NoteListItems extends Component {
   	const { notes } = this.props;
   	return (   
       <div>
-	      { notes.length > 0 ? (
+	      { notes.length ? (
 		      <ListGroup>
 				    {notes.map((note) => (
 				      <NoteListItem key={note.id} note={note} />

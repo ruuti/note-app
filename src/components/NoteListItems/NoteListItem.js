@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { ListGroupItem } from 'react-bootstrap';
 import { Link, withRouter } from "react-router-dom";
-import moment from 'moment';
+
+import NoteListItemContent from './NoteListItemContent';
 
 import { removeNote }  from '../../firebase';
 import { IconButton } from '../';
@@ -34,19 +35,6 @@ class NoteListItem extends Component {
     this.unlisten();
   }
 
-  getItemTitle(note){
-    if(!note.text.length){
-      // Return just a edit date
-      return moment(note.createdAt).format('dddd');
-    }else if(note.text.length > 60){
-      // Title is too long to display so cut it
-      return note.text.substring(0, 60)+'..';
-    }else{
-      // Return note text as it is
-      return note.text;
-    }
-  }
-
   render() {
     const { note } = this.props;
     const pathname = '/'+note.id;
@@ -55,16 +43,7 @@ class NoteListItem extends Component {
     return (
       <Link to={{ pathname }}>
         <ListGroupItem className={ isActive ? 'active' : '' }>
-          <div>
-            <div>
-              <span>{ this.getItemTitle(note) }</span>
-            </div>
-            <div>
-              <span className={'date'}>
-                <i className={'glyphicon glyphicon-time'}></i> { moment(note.createdAt).format('dddd') }
-              </span>
-            </div>
-          </div>
+          <NoteListItemContent note={note} />
           <IconButton 
             buttonClass={'delete'}
             iconClass={'glyphicon glyphicon-trash'} 
