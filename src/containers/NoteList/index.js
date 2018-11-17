@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { NoteListItems, SearchBar } from '../../components';
+import { NoteListItems, SearchBar, NoSearchHits } from '../../components';
 
 import { setSearch } from '../../actions';
 
@@ -64,12 +64,18 @@ class NoteList extends Component {
   }
 
   render() {
+    const { searchHits, query } = this.state;
+    const noSearchHits = !searchHits.length && query.length;
+
     return (
       <div>
         <SearchBar 
-          inputValue={this.state.query} 
+          inputValue={query} 
           onChange={this.handleChange} />
-        <NoteListItems notes={this.state.searchHits} />        
+        <NoteListItems notes={searchHits} />
+        { noSearchHits &&
+          <NoSearchHits query={query} />
+        }    
       </div>
     );
   }

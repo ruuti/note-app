@@ -8,6 +8,7 @@ import CategoryCreationModal from './CategoryCreationModal';
 import NoteListItems from './NoteListItems';
 import SearchBar from './SearchBar';
 import AppContainer from './AppContainer';
+import NoSearchHits from './NoSearchHits';
 
 export {
   Header,
@@ -19,5 +20,6 @@ export {
   CategoryCreationModal,
   NoteListItems,
   SearchBar,
-  AppContainer
+  AppContainer,
+  NoSearchHits
 };

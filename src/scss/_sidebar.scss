@@ -40,21 +40,24 @@
         border-bottom: 1px solid #304051;
         border-right-color: $highlight-color;
 
-        .icon-only-button {
-          opacity: 0.5;
-      
-          &:hover {
-            opacity: 1.0;
-          }
-        }
-      
         span:not(.date) {
           cursor: default;
           font-weight: bold;
         }
+
+        &:hover {
+          .icon-only-button {
+            opacity: 0.5;
+        
+            &:hover {
+              opacity: 1.0;
+            }
+          }
+        }
       }
     }
   }
+
   .searchBar {
     background: none;
     border-bottom: 1px solid #304051;
@@ -67,6 +70,11 @@
       .btn {
         background: none;
         color: #ccc;
+        outline:none;
+        cursor: default;
+        &:active {
+          box-shadow:none;
+        }
       }
     
       input {
@@ -88,7 +96,27 @@
       }
     }
   }
-  .searchBar input:focus {
-    border-color: #FFF;
+  .noSearchResults {
+    color: #848e9a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    font-weight: 400;
+    font-size: 100%;
+    text-align: center;
+    padding-top: 50px;
+    
+    .icon {
+      background: url('/img/empty-search.png') no-repeat center center;
+      display: block;
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+    }
   }
 }
