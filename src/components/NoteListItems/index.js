@@ -1,24 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react';
 import NoteListItem from './NoteListItem';
 import { ListGroup } from 'react-bootstrap';
 
-class NoteListItems extends Component {
-  render() {
-  	const { notes } = this.props;
-  	return (   
-      <div>
-	      { notes.length ? (
-		      <ListGroup>
-				    {notes.map((note) => (
-				      <NoteListItem key={note.id} note={note} />
-				    ))}
-				  </ListGroup>
-				 ) : (
-				 	<p>Nothing here..</p>
-				 )}
-			 </div>
-    );
-  }
-}
+const NoteListItems = ({notes}) => (
+  <ListGroup>
+    {notes.map((note) => (
+      <NoteListItem key={note.id} note={note} />
+    ))}
+  </ListGroup>
+);
 
 export default NoteListItems;
