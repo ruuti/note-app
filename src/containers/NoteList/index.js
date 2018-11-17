@@ -14,33 +14,26 @@ class NoteList extends Component {
     this.state = { 
       query : props.query,
       searchHits: props.notes,
-      allNotes: props.notes,
+      notes: props.notes,
       selectedCategory: props.selectedCategory
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   // Update state when props change if needed.
-  componentWillReceiveProps(nextProps) {
-    const { notes, selectedCategory, query } = nextProps;
-    if (this.state.allNotes !== notes) {
-      this.setState({
-        allNotes: notes
-      },() => {
+  componentWillReceiveProps({notes, selectedCategory, query}) {
+    if (this.state.notes !== notes) {
+      this.setState({notes},() => {
         this.filterNotes();
       });
     }
     if (this.state.selectedCategory !== selectedCategory) {
-      this.setState({
-        selectedCategory: selectedCategory
-      },() => {
+      this.setState({selectedCategory},() => {
         this.filterNotes();
       });
     }
     if (this.state.query !== query) {
-      this.setState({
-        query: query
-      },() => {
+      this.setState({query},() => {
         this.filterNotes();
       });
     }
@@ -62,14 +55,14 @@ class NoteList extends Component {
   }
 
   filterNotes(){
-    const { query, allNotes, selectedCategory } = this.state;
+    const { query, notes, selectedCategory } = this.state;
     let hitsArray = [];
 
     if(query.length){
-      hitsArray = this.search(allNotes);
+      hitsArray = this.search(notes);
     }else{
       // User is not searching anything
-      hitsArray = allNotes;
+      hitsArray = notes;
     }
 
     // Filter notes by possible active category

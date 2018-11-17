@@ -36,8 +36,7 @@ class Editor extends Component {
 
   // Update state when user navigates to 
   // a new note.
-  componentWillReceiveProps(nextProps) {
-    const { note } = nextProps;
+  componentWillReceiveProps({note}) {
     if (this.state.id !== note.id) {
       this.setState({
         ...note,
@@ -51,9 +50,9 @@ class Editor extends Component {
   // Gets the plain text version (one string) from
   // raw data. Line breaks (blocks) are replaced
   // with space.
-  getPlainTextVersion(raw){
+  getPlainTextVersion({blocks}){
     let plainText = '';
-    raw.blocks.map(block =>
+    blocks.map(block =>
       plainText += block.text+' '
     );
     return plainText.trim(); // Remove last space
