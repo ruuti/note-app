@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { IconButton, CategoryListItems } from '../../components';
+import { CategoryListItems, 
+  CategoryListHeader,
+  CategoryCreationModal } from '../../components';
 
 import { addCategory }  from '../../firebase';
 import { selectCategory } from '../../actions';
-
-import { Button, Modal } from 'react-bootstrap';
 
 class CategoryList extends Component {
 
@@ -42,7 +42,7 @@ class CategoryList extends Component {
     });
   }
 
-  // Handle textarea change when onChange gets
+  // Handle input change when onChange gets
   // triggered
   handleChange(event) {
     this.setState({category: event.target.value});
@@ -51,45 +51,15 @@ class CategoryList extends Component {
   render() {
     return (
       <div>
-        <div className={'categoryHeader'}>
-          <div>
-            <span className={'strong'}>Folders</span>
-          </div>
-          <IconButton 
-            buttonClass={'iconBtn'}
-            iconClass={'glyphicon glyphicon-plus-sign'}
-            onClick={this.handleClick} />
-        </div>
+        <CategoryListHeader onClick={this.handleClick} />
         <CategoryListItems categories={this.props.categories} />
-        
-        <Modal
+        <CategoryCreationModal
           show={this.state.showModal}
           onHide={this.handleHideModal}
-          keyboard={true}
-          animation={false}>
-            <Modal.Header closeButton>
-              <Modal.Title>Create folder</Modal.Title>
-            </Modal.Header>
-            
-            <form onSubmit={this.handleSubmit}>
-              <Modal.Body>              
-                <input
-                  type="text"
-                  value={this.state.text} 
-                  onChange={this.handleChange}
-                  required={true}
-                  autoFocus
-                  placeholder={'Folder name'}
-                  className={'form-control'} />
-              </Modal.Body>
-
-              <Modal.Footer>
-                <Button onClick={this.handleHideModal}>Cancel</Button>
-                <Button bsStyle="primary" type="submit">Create folder</Button>
-              </Modal.Footer>
-            </form>
-        </Modal>
-
+          onSubmit={this.handleSubmit}
+          inputValue={this.state.text}
+          onChange={this.handleChange}
+          onClick={this.handleHideModal} />
       </div>
     );
   }
