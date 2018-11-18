@@ -8,6 +8,7 @@ Note-app is a sample web-based note taking application.
 
 - Create, edit and delete notes in realtime
 - Create and delete folders
+- Drag and drop notes between folders
 - Rich text editor with **bold**, *italic* and underline
 - Advanced live fuzzy-search
 
@@ -59,6 +60,7 @@ Deploy application to Firebase hosting by running: `firebase deploy`.
 
 - [React](https://github.com/facebook/react)
 - [Firebase](https://firebase.google.com/)
+- [React DnD](https://github.com/react-dnd/react-dnd)
 - [Fuse.js](https://github.com/krisk/fuse)
 - [Draft.js](https://github.com/facebook/draft-js)
 - [Moment.js](https://github.com/moment/moment/)

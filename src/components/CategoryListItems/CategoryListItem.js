@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { selectCategory } from '../../actions';
 import { removeCategory }  from '../../firebase';
 import { IconButton } from '../';
+import CategoryDropTarget from './CategoryDropTarget';
 
 class CategoryListItem extends Component {
   
@@ -30,16 +31,18 @@ class CategoryListItem extends Component {
   render() {
     const { category, active } = this.props;
     return (
-      <ListGroupItem className={ active && 'active' }>
-        <span onClick={this.handleClick}>
-          { category.title }
-        </span>
-        { !category.isDefault &&
-          <IconButton 
-            iconClass={'glyphicon-trash'}
-            onClick={this.handleDeleteClick} />
-        }
-      </ListGroupItem>
+      <CategoryDropTarget category={category}>      
+        <ListGroupItem className={ active && 'active' }>
+          <span onClick={this.handleClick}>
+            { category.title }
+          </span>
+          { !category.isDefault &&
+            <IconButton 
+              iconClass={'glyphicon-trash'}
+              onClick={this.handleDeleteClick} />
+          }
+        </ListGroupItem>
+      </CategoryDropTarget>
     );
   }
 }

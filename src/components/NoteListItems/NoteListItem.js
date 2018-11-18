@@ -3,6 +3,7 @@ import { ListGroupItem } from 'react-bootstrap';
 import { Link, withRouter } from "react-router-dom";
 
 import NoteListItemContent from './NoteListItemContent';
+import NoteListItemSource from './NoteListItemSource';
 
 import { removeNote }  from '../../firebase';
 import { IconButton } from '../';
@@ -41,14 +42,16 @@ class NoteListItem extends Component {
     const isActive = (note.id === this.state.selectedNote);
 
     return (
-      <Link to={{ pathname }}>
-        <ListGroupItem className={ isActive && 'active' }>
-          <NoteListItemContent note={note} />
-          <IconButton 
-            iconClass={'glyphicon-trash'} 
-            onClick={this.handleRemove} />
-        </ListGroupItem>
-      </Link>
+      <NoteListItemSource note={note}>
+        <Link to={{ pathname }}>
+          <ListGroupItem className={ isActive && 'active' }>
+            <NoteListItemContent note={note} />
+            <IconButton 
+              iconClass={'glyphicon-trash'} 
+              onClick={this.handleRemove} />
+          </ListGroupItem>
+        </Link>
+      </NoteListItemSource>
     );
   }
 }

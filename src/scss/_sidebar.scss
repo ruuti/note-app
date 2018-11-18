@@ -12,6 +12,10 @@
   .list-group {
     background: $darker-color;
 
+    .isDragging {
+      opacity: 0.5;
+    }
+
     a .list-group-item,
     a:active .list-group-item,
     a:hover .list-group-item

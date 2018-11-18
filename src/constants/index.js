@@ -10,3 +10,5 @@ export const CATEGORY = {
 export const SEARCH = {
   SET_SEARCH: 'set_search'
 }
+
+export const NOTE_ITEM = 'NOTE_ITEM';

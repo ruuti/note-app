@@ -31,6 +31,15 @@ export const updateNote = (uid, text, raw) => {
 };
 
 /**
+ * Move note to category.
+ * Note: does not update editedAt time
+ * @param  {string} uid         Note id
+ * @param  {string} categoryUid Category id
+ */
+export const moveNoteToCategory = (uid, categoryUid) => 
+  notesRef.child(uid).update({categoryUid});
+
+/**
  * Delete note from database
  * @param  {string} uid of the note to delete
  */

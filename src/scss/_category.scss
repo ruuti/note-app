@@ -23,16 +23,19 @@
   .list-group {
     .list-group-item {
       background-color: $lighter-color;
-      
+      transition: transform 0.3s;
+
       span {
         padding-left: 5px;
         cursor: pointer;
       }
+      
       .icon-only-button {
         opacity: 0;
         font-size: 90%;
         transition: opacity 0.1s;
       }
+
       &.active {
         font-weight: bold;
         background: $darker-color;
@@ -50,6 +53,13 @@
             }
           }
         }
+      }
+    }
+    
+    .droppable {
+      .list-group-item:not(.active) {
+        background: #2f4052;
+        transform: scale(1.02);
       }
     }
   }
