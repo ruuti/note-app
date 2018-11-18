@@ -22,6 +22,10 @@ class CategoryList extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  /**
+   * Handle new folder form submission
+   * @param  {event} e
+   */
   handleSubmit(e){
     e.preventDefault();
     const { category } = this.state;
@@ -33,10 +37,18 @@ class CategoryList extends Component {
     });
   }
   
+  /**
+   * Hides modal window when user clicks outside
+   * of the open modal window or presses close -button
+   */
   handleHideModal() {
     this.setState({ showModal: false });
   }
   
+  /**
+   * Resets modal window input (state: category)
+   * and opens folder creation modal window.
+   */
   handleClick() {
     this.setState({ 
       category: '',
@@ -44,10 +56,13 @@ class CategoryList extends Component {
     });
   }
 
-  // Handle input change when onChange gets
-  // triggered
-  handleChange(event) {
-    this.setState({category: event.target.value});
+  /**
+   * Handle input change by updating state when 
+   * folder creation input onChange gets tiggered
+   * @param  {event} event
+   */
+  handleChange({target}) {
+    this.setState({category: target.value});
   }
 
   render() {
