@@ -9,6 +9,7 @@ import NoteListItems from './NoteListItems';
 import SearchBar from './SearchBar';
 import AppContainer from './AppContainer';
 import NoSearchHits from './NoSearchHits';
+import ConfirmationModal from './ConfirmationModal';
 
 export {
   Header,
@@ -21,5 +22,6 @@ export {
   NoteListItems,
   SearchBar,
   AppContainer,
-  NoSearchHits
+  NoSearchHits,
+  ConfirmationModal
 };
