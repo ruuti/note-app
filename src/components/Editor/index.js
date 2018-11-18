@@ -22,8 +22,11 @@ class Editor extends Component {
     this.focus = () => this.refs.editor.focus();
   }
 
-  // Returns either empty EditorState or from
-  // raw
+  /**
+   * Returns either empty EditorState or from note
+   * @param  {object}       note
+   * @return {EditorState}
+   */
   getEditorStateFromNote(note){
     return note.raw
       ? EditorState.createWithContent(
@@ -34,8 +37,10 @@ class Editor extends Component {
       : EditorState.createEmpty()
   }
 
-  // Update state when user navigates to 
-  // a new note.
+  /**
+   * Update state when user navigates to a new note.
+   * @param  {object} props.note
+   */
   componentWillReceiveProps({note}) {
     if (this.state.id !== note.id) {
       this.setState({
@@ -47,9 +52,13 @@ class Editor extends Component {
     }
   }
 
-  // Gets the plain text version (one string) from
-  // raw data. Line breaks (blocks) are replaced
-  // with space.
+  /**
+   * Gets the plain text version (one string) from
+   * raw data. Line breaks (blocks) are replaced
+   * with space.
+   * @param  {RawDraftContentState} options.blocks
+   * @return {string} plaintext
+   */
   getPlainTextVersion({blocks}){
     let plainText = '';
     blocks.map(block =>
@@ -58,25 +67,53 @@ class Editor extends Component {
     return plainText.trim(); // Remove last space
   }
 
-  // Takes current editorState and stores both raw and
-  // plaintext values to database
-  storeToDatabase(editorState){
-    const raw = convertToRaw(
-      editorState.getCurrentContent()
-    );
-    const { id } = this.state,
-      plainText  = this.getPlainTextVersion(raw);
-    updateNote(id, plainText, JSON.stringify(raw));
+  /**
+   * Check if input data and state data is different
+   * @param  {string} newText plaintext version of data
+   * @param  {string} newRaw  JSON strigified RawDraftContentState
+   * @return {boolean}
+   */
+  dataHasChanged(newText, newRaw){
+    const { text, raw } = this.state;
+    return (text !== newText || raw !== newRaw);
   }
 
-  // Handle editor change when onChange gets
-  // triggered
+  /**
+   * Takes current editorState and stores both raw and
+   * plaintext values to database
+   * @param  {EditorState} editorState
+   */
+  storeToDatabase(editorState){
+    const rawObj = convertToRaw(
+      editorState.getCurrentContent()
+    );
+    const { id } = this.state;
+    const plainText  = this.getPlainTextVersion(rawObj);
+    const raw = JSON.stringify(rawObj);
+
+    // This functions gets triggered too often (for example 
+    // when cursor moves) and that's why we want to check
+    // if plaintext or raw version has changed before storing
+    // it to database.
+    if(this.dataHasChanged(plainText, raw))
+      updateNote(id, plainText, raw);
+  }
+
+  /**
+   * andle editor change when onChange gets triggered
+   * @param  {EditorState} editorState
+   */
   handleChange(editorState) {
     this.setState({editorState});
     this.storeToDatabase(editorState);
   }
 
-  // Handle commands like cmd+(b|i|u)
+  /**
+   * Handle commands like cmd+(b|i|u)
+   * @param  {string}      command
+   * @param  {EditorState} editorState
+   * @return {string}
+   */
   handleKeyCommand(command, editorState) {
     const newState = RichUtils.handleKeyCommand(
       editorState,
