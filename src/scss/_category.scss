@@ -1,10 +1,10 @@
 .categorySidebar {
-  background: $lighter-color;
+  background: none;
   padding:0px;
   overflow-y: auto;
   display: flex;
   z-index: 1;
-  
+
   .categoryHeader {
     padding: 10px 15px;
     display: flex;

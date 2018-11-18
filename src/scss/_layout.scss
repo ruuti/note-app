@@ -1,6 +1,13 @@
+body {
+  background: $lighter-color;
+  background: $lighter-color;
+  background: -moz-linear-gradient(top, $lighter-color 0%, $lighter-color-gradiant 100%);
+  background: -webkit-linear-gradient(top, $lighter-color 0%, $lighter-color-gradiant 100%);
+  background: linear-gradient(to bottom, $lighter-color 0%, $lighter-color-gradiant 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$lighter-color', endColorstr='$lighter-color-gradiant',GradientType=0 );
+}
 .App {
   height: 100vh;
-  background: $lighter-color;
 }
 .split {
   height: 100%;
