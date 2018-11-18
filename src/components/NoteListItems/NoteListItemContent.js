@@ -4,27 +4,28 @@ import DateRow from './DateRow';
 
 class NoteListItemContent extends Component {
   
-  getItemTitle(note){
-    if(!note.text.length){
-      // Return just a empty string
+  /**
+   * Return item title to display from note
+   * @param  {object} note to return title from
+   * @return {string}      title
+   */
+  getNoteTitle({text}){
+    if(!text.length)
       return 'New note';
-    }else if(note.text.length > 60){
-      // Title is too long to display so cut it
-      return note.text.substring(0, 60)+'..';
-    }else{
-      // Return note text as it is
-      return note.text;
-    }
+    else if(text.length > 61)
+      return `${text.substring(0, 60)}..`;
+    return text;
   }
 
   render() {
     const { note } = this.props;
+    const title = this.getNoteTitle(note);
     const formatedEditedAt = moment(note.editedAt).format('dddd');
 
     return (
       <div>
         <div>
-          { this.getItemTitle(note) }
+          { title }
         </div>
         <div>
           <DateRow text={formatedEditedAt} />
