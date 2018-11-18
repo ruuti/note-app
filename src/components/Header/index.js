@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-
 import { addNote }  from '../../firebase';
 import { setSearch } from '../../actions';
 import { IconButton } from '../';
@@ -13,14 +12,15 @@ class Header extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  /**
+   * Creates a new note, opens the note and 
+   * clears search query
+   */
   handleClick() {
     const { selectedCategory } = this.props;
-    addNote(selectedCategory).then(id => {
-      // Open created empty note
-      this.props.history.push('/'+id);
-      // Clear search for better UX
-      this.props.setSearch('');
-    });
+    this.props.setSearch('');
+    addNote(selectedCategory).then(uid => 
+      this.props.history.push('/'+uid));
   }
 
   render (){
@@ -34,13 +34,11 @@ class Header extends Component {
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    setSearch: query => {
-      dispatch(setSearch(query))
-    }
+const mapDispatch = dispatch => ({
+  setSearch: query => {
+    dispatch(setSearch(query))
   }
-}
+})
 
 const mapState = state => ({
   selectedCategory: state.categories.selectedCategory
