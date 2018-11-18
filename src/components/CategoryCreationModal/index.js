@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 
-const CategoryCreationModal = ({show, onHide, onSubmit, inputValue, onChange, onClick}) => (
+const CategoryCreationModal = ({show, onHide, onSubmit, inputValue, onChange, onClick, maxLength}) => (
   <Modal
     show={show}
     onHide={onHide}
@@ -14,19 +14,19 @@ const CategoryCreationModal = ({show, onHide, onSubmit, inputValue, onChange, on
       <form onSubmit={onSubmit}>
         <Modal.Body>              
           <input
-            type="text"
+            type={'text'}
             value={inputValue} 
             onChange={onChange}
             required={true}
             autoFocus
             placeholder={'Type a new folder name..'}
             className={'form-control'}
-            maxLength="25" />
+            maxLength={maxLength} />
         </Modal.Body>
 
         <Modal.Footer>
           <button type="submit" className={'btn btn-green btn-block btn-big'}>
-            <i class="glyphicon glyphicon-plus"></i> Create folder
+            <i className={'glyphicon glyphicon-plus'}></i> {'Create folder'}
           </button>
         </Modal.Footer>
       </form>

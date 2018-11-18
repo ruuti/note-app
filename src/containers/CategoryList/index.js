@@ -6,6 +6,7 @@ import { CategoryListItems,
 
 import { addCategory }  from '../../firebase';
 import { selectCategory } from '../../actions';
+import { CATEGORY_LENGTH } from '../../constants';
 
 class CategoryList extends Component {
 
@@ -60,6 +61,7 @@ class CategoryList extends Component {
           onSubmit={this.handleSubmit}
           inputValue={this.state.text}
           onChange={this.handleChange}
+          maxLength={CATEGORY_LENGTH}
           onClick={this.handleHideModal} />
       </div>
     );

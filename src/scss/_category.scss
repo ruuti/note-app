@@ -12,21 +12,31 @@
     justify-content: space-between;
     
     .icon-only-button {
+      
       i {
         transition: all 0.2s;
       }
+
       i:hover {
         color: $highlight-color;
       }
     }
   }
+
   .list-group {
     .list-group-item {
       background-color: $lighter-color;
       transition: transform 0.3s;
 
+      .category-row {
+        display: flex;
+        width:100%;
+        justify-content: space-between;
+      }
+
       span {
         padding-left: 5px;
+        padding-bottom: 1px;
         cursor: pointer;
       }
       
@@ -52,6 +62,16 @@
               opacity: 1.0;
             }
           }
+        }
+      }
+
+      .inline-edit {
+        input {
+          background: none;
+          border:none;
+          outline: none;
+          border-bottom: 1px dotted #CCC;
+          padding: 0 0 0 5px; 
         }
       }
     }

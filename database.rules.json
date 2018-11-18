@@ -1,18 +1,18 @@
 {
   "rules": {
     "categories" : {
-    	".read": true,
-    	".write": true,
-    	"$category" : {
-    		".validate": "newData.hasChildren(['title']) && newData.child('title').isString()"
-    	}
+      ".read": true,
+      ".write": true,
+      "$category" : {
+        ".validate": "newData.hasChildren(['title']) && newData.child('title').isString() && newData.child('title').val().length > 0 && newData.child('title').val().length <= 20"
+      }
     },
     "notes" : {
-    	".read": true,
-    	".write": true,
-    	"$note": {
-    		".validate": "newData.hasChildren(['createdAt', 'editedAt', 'text']) && newData.child('text').isString() && newData.child('createdAt').isNumber() && newData.child('editedAt').isNumber()"
-    	}
+      ".read": true,
+      ".write": true,
+      "$note": {
+        ".validate": "newData.hasChildren(['createdAt', 'editedAt', 'text']) && newData.child('text').isString() && newData.child('createdAt').isNumber() && newData.child('editedAt').isNumber()"
+      }
     }
   }
 }

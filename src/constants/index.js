@@ -12,3 +12,5 @@ export const SEARCH = {
 }
 
 export const NOTE_ITEM = 'NOTE_ITEM';
+
+export const CATEGORY_LENGTH = 19;

@@ -1,4 +1,4 @@
-import { addCategory, removeCategory } from './category';
+import { addCategory, removeCategory, editCategory } from './category';
 import { addNote, updateNote, removeNote, moveNoteToCategory } from './notes';
 
 export {
@@ -7,5 +7,6 @@ export {
   removeNote,
   addCategory,
   removeCategory,
-  moveNoteToCategory
+  moveNoteToCategory,
+  editCategory
 };

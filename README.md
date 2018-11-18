@@ -9,6 +9,7 @@ Note-app is a sample web-based note taking application.
 - Create, edit and delete notes in realtime
 - Create and delete folders
 - Drag and drop notes between folders
+- Edit folder name inline by double clicking a folder name
 - Rich text editor with **bold**, *italic* and underline
 - Advanced live fuzzy-search
 
