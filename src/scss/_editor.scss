@@ -3,6 +3,10 @@
   border-top-right-radius: 10px;
   height: 100%;
   overflow-y: auto;
+  z-index:9;
+  -webkit-box-shadow: -3px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: -3px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: -3px 0px 20px 0px rgba(0, 0, 0, 0.15);
 
   .editor-container {
     border-top-right-radius: 10px;
