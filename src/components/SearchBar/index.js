@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '../';
 
-const SearchBar = ({inputValue, onChange}) => (
+const SearchBar = ({inputValue, onChange, placeholder}) => (
   <div className={'searchBar'}>
     <div className={'input-group'}>
       <span className={'input-group-btn'}>
@@ -12,7 +12,7 @@ const SearchBar = ({inputValue, onChange}) => (
       <input 
         type={'text'}
         className={'form-control'}
-        placeholder={'Search for notes...'}
+        placeholder={placeholder}
         value={inputValue} 
         onChange={onChange} />
     </div>
